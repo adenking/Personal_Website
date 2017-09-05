@@ -1,4 +1,4 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from .models import Question
@@ -7,18 +7,12 @@ from .models import Question
 # Create your views here.
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {
-        'latest_question_list': latest_question_list,
-    }
-    return HttpResponse(request, 'polls/index.html', context)
+    context = {'latest_question_list': latest_question_list}
+    return render(request, 'polls/index.html', context)
 
 
 def detail(request, question_id):
-    try:
-        question = Question.objects.get(pk=question_id)
-    except:
-        raise Http404("Question does not exist")
-    return render(request, 'polls/detail.html', {'question': question})
+    return HttpResponse("You're looking at the question %s." % question_id)
 
 
 def results(request, question_id):
