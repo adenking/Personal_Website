@@ -18,10 +18,10 @@ class QuestionModelTests(TestCase):
         """checks to make sure content that is old isn't recent"""
         time = timezone.now() - datetime.timedelta(days=1, seconds= 1)
         old_question = Question(pub_date=time)
-        self.assertsIs(old_question.was_published_recently(), False)
+        self.assertIs(old_question.was_published_recently(), False)
 
     def test_was_published_recently_with_recent_question(self):
         """checks to make sure content that is recent is recent"""
         time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=1)
         recent_question = Question(pub_date=time)
-        self.assertsIs(recent_question.was_published_recently(), True)
+        self.assertIs(recent_question.was_published_recently(), True)
