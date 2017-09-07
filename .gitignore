@@ -100,4 +100,4 @@ ENV/
 # mypy
 .mypy_cache/
 .idea/
-mysite/mysite/settings.py
+mysite/etc/secret_key.txt
