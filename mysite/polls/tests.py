@@ -29,9 +29,10 @@ class QuestionModelTests(TestCase):
 
 
 def create_question(question_text, days):
-    """create a question giveen 'question_text' as well as the offset given in days """
+    """create a question given 'question_text' as well as the offset given in days """
     time = timezone.now() + datetime.timedelta(days=days)
     return Question.objects.create(question_text=question_text, pub_date=time)
+
 
 class QuestionIndexViewTests(TestCase):
     def test_no_questions(self):
